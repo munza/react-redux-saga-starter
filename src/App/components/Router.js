@@ -1,8 +1,9 @@
 import React from 'react';
-import { Router as ReactRouter, Switch, Route } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router';
+import { Switch, Route } from 'react-router-dom';
 
 const Router = ({ history, routes, children }) => (
-  <ReactRouter history={history}>
+  <ConnectedRouter history={history}>
     {children}
     <Switch>
       {routes.map((route, i) => (
@@ -10,7 +11,7 @@ const Router = ({ history, routes, children }) => (
       ))}
       <Route path="*" render={() => <h1>404! Not Found</h1>} />
     </Switch>
-  </ReactRouter>
+  </ConnectedRouter>
 );
 
 const RouteWithSubRoutes = route => (

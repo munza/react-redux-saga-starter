@@ -1,20 +1,22 @@
-const reducers = (state = { count: 0 }, action) => {
-  switch (action.type) {
-    case 'COUNTER/COUNT_INCREASE':
-      return {
-        ...state,
-        count: state.count + 1
-      };
+import { handleActions } from 'redux-actions';
 
-    case 'COUNTER/COUNT_DECREASE':
-      return {
-        ...state,
-        count: state.count > 0 ? state.count - 1 : state.count
-      };
+import { types } from './actions';
 
-    default:
-      return state;
-  }
-};
+const intialState = { count: 0 };
+
+const reducers = handleActions(
+  {
+    [types.COUNT_INCREASE]: (state, action) => ({
+      ...state,
+      count: state.count + 1
+    }),
+
+    [types.COUNT_DECREASE]: (state, action) => ({
+      ...state,
+      count: state.count > 0 ? state.count - 1 : state.count
+    })
+  },
+  intialState
+);
 
 export default reducers;

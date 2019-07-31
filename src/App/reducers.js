@@ -1,11 +1,14 @@
 import { combineReducers } from 'redux';
+import { connectRouter } from 'connected-react-router';
 
 import { default as counter } from '../Counter/reducers';
 import { default as github } from '../Github/reducers';
 
-const reducers = combineReducers({
-  counter,
-  github
-});
+const createRootReducers = history =>
+  combineReducers({
+    counter,
+    github,
+    router: connectRouter(history)
+  });
 
-export default reducers;
+export default createRootReducers;

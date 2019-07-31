@@ -1,9 +1,10 @@
 import { createBrowserHistory } from 'history';
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { routerMiddleware } from 'connected-react-router';
 import createSagaMiddleware from 'redux-saga';
 
-import reducers from './reducers';
+import createRootReducers from './reducers';
 import rootSaga from './sagas';
 
 const initialStore = {};
@@ -11,9 +12,11 @@ const history = createBrowserHistory();
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
-  reducers,
+  createRootReducers(history),
   initialStore,
-  composeWithDevTools(applyMiddleware(sagaMiddleware))
+  composeWithDevTools(
+    applyMiddleware(routerMiddleware(history), sagaMiddleware)
+  )
 );
 
 sagaMiddleware.run(rootSaga);

@@ -1,16 +1,16 @@
-import React from 'react';
 import { connect } from 'react-redux';
 
 import Counter from './components/Counter';
+import actions from './actions';
 
 const mapStateToProps = store => ({
   count: store.counter.count
 });
 
-const mapDispatchToProps = dispatch => ({
-  handleIncrement: () => dispatch({ type: 'COUNTER/COUNT_INCREASE' }),
-  handleDecrement: () => dispatch({ type: 'COUNTER/COUNT_DECREASE' })
-});
+const mapDispatchToProps = {
+  handleIncrement: actions.handleIncrement,
+  handleDecrement: actions.handleDecrement
+};
 
 export default connect(
   mapStateToProps,

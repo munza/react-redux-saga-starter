@@ -1,29 +1,30 @@
-const reducers = (state = { repos: [], loading: false }, action) => {
-  switch (action.type) {
-    case 'REPOS/FETCH_REQUEST':
-      return {
-        ...state,
-        repos: [],
-        loading: true
-      };
+import { handleActions } from 'redux-actions';
 
-    case 'REPOS/FETCH_SUCCESS':
-      return {
-        ...state,
-        repos: action.payload.repos,
-        loading: false
-      };
+import { types } from './actions';
 
-    case 'REPOS/FETCH_FAIL':
-      return {
-        ...state,
-        repos: [],
-        loading: false
-      };
+const initialState = { repos: [], loading: false };
 
-    default:
-      return state;
-  }
-};
+const reducers = handleActions(
+  {
+    [types.REPOS_FETCH]: (state, action) => ({
+      ...state,
+      repos: [],
+      loading: true
+    }),
+
+    [types.REPOS_RECEIVED]: (state, action) => ({
+      ...state,
+      repos: action.payload.repos,
+      loading: false
+    }),
+
+    [types.REPOS_FETCH_FAIL]: (state, action) => ({
+      ...state,
+      repos: [],
+      loading: false
+    })
+  },
+  initialState
+);
 
 export default reducers;

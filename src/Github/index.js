@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import RepoGrid from './components/RepoGrid';
+import actions from './actions';
 
-class Github extends React.Component {
+class Github extends Component {
   componentDidMount() {
     this.props.fetchRepos();
   }
@@ -23,9 +24,9 @@ const mapStateToProps = ({ github }) => ({
   loading: github.loading
 });
 
-const mapDispatchToProps = dispatch => ({
-  fetchRepos: () => dispatch({ type: 'REPOS/FETCH_REQUEST' })
-});
+const mapDispatchToProps = {
+  fetchRepos: actions.fetchRepos
+};
 
 export default connect(
   mapStateToProps,
