@@ -1,8 +1,17 @@
+import { createActions } from 'redux-actions';
 import { handleActions } from 'redux-actions';
 
-import { types } from './actions';
-
 const intialState = { count: 0 };
+
+const types = {
+  INCREASE: 'counter/INCREASE',
+  DECREASE: 'counter/DECREASE'
+};
+
+const creators = createActions({
+  [types.INCREASE]: () => ({}),
+  [types.DECREASE]: () => ({})
+});
 
 const reducers = handleActions(
   {
@@ -18,5 +27,12 @@ const reducers = handleActions(
   },
   intialState
 );
+
+export function handleIncrement() {
+  return creators.counter.increase();
+}
+export function handleDecrement() {
+  return creators.counter.decrease();
+}
 
 export default reducers;

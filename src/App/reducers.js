@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router';
 
-import { default as counter } from '../Counter/reducers';
+import { default as counter } from '../Counter/ducks';
 import { default as github } from '../Github/reducers';
 
 const createRootReducers = history =>
