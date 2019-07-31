@@ -1,14 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const Counter = props => (
-  <div>
-    <h2>Counter</h2>
-    <p>{props.count}</p>
-    <button onClick={() => props.handleDecrement()}>-</button>
-    <button onClick={() => props.handleIncrement()}>+</button>
-  </div>
-);
+import Counter from './components/Counter';
 
 const mapStateToProps = store => ({
   count: store.counter.count
