@@ -1,18 +1,18 @@
 import { createActions } from 'redux-actions';
 
 const types = {
-  COUNT_INCREASE: 'COUNTER/COUNT_INCREASE',
-  COUNT_DECREASE: 'COUNTER/COUNT_DECREASE'
+  INCREASE: 'counter/INCREASE',
+  DECREASE: 'counter/DECREASE'
 };
 
-const actionCreators = createActions({
-  [types.COUNT_INCREASE]: () => ({}),
-  [types.COUNT_DECREASE]: () => ({})
+const creators = createActions({
+  [types.INCREASE]: () => ({}),
+  [types.DECREASE]: () => ({})
 });
 
 const actions = {
-  handleIncrement: actionCreators.counter.countIncrease,
-  handleDecrement: actionCreators.counter.countDecrease
+  handleIncrement: creators.counter.increase,
+  handleDecrement: creators.counter.decrease
 };
 
 export default actions;

@@ -1,20 +1,20 @@
 import { createActions } from 'redux-actions';
 
 const types = {
-  REPOS_FETCH: 'REPOS/FETCH_REQUEST',
-  REPOS_RECEIVED: 'REPOS/FETCH_SUCCESS',
-  REPOS_FETCH_FAIL: 'REPOS/FETCH_FAIL'
+  REPOS_FETCH: 'github/repos/FETCH_REQUEST',
+  REPOS_RECEIVED: 'github/repos/FETCH_SUCCESS',
+  REPOS_FETCH_FAIL: 'github/repos/FETCH_FAIL'
 };
 
-const actionCreators = createActions({
+const creators = createActions({
   [types.REPOS_FETCH]: () => ({}),
   [types.REPOS_RECEIVED]: repos => ({ repos }),
   [types.REPOS_FETCH_FAIL]: error => ({ error })
 });
 
 const actions = {
-  fetchRepos: actionCreators.repos.fetchRequest,
-  receivedRepos: actionCreators.repos.fetchSuccess
+  fetchRepos: creators.github.repos.fetchRequest,
+  receivedRepos: creators.github.repos.fetchSuccess
 };
 
 export default actions;

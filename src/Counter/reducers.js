@@ -6,12 +6,12 @@ const intialState = { count: 0 };
 
 const reducers = handleActions(
   {
-    [types.COUNT_INCREASE]: (state, action) => ({
+    [types.INCREASE]: (state, action) => ({
       ...state,
       count: state.count + 1
     }),
 
-    [types.COUNT_DECREASE]: (state, action) => ({
+    [types.DECREASE]: (state, action) => ({
       ...state,
       count: state.count > 0 ? state.count - 1 : state.count
     })
