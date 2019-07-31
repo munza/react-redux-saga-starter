@@ -1,12 +1,14 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 
 import Counter from '../Counter';
+import store from './store';
 
 const App = props => (
-  <div>
+  <Provider store={store}>
     <h1>App</h1>
     <Counter />
-  </div>
+  </Provider>
 );
 
 export default App;
