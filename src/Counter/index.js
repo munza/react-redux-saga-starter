@@ -1,30 +1,15 @@
-import React from 'react';
+import { connect } from 'react-redux';
 
-class Counter extends React.Component {
-  state = {
-    count: 0
-  };
+import Counter from './components/Counter';
+import { handleIncrement, handleDecrement } from './ducks';
 
-  handleIncrement() {
-    this.setState({ count: this.state.count + 1 });
-  }
+const mapStateToProps = store => ({
+  count: store.counter.count
+});
 
-  handleDecrement() {
-    this.setState({
-      count: this.state.count > 0 ? this.state.count - 1 : this.state.count
-    });
-  }
+const mapDispatchToProps = { handleIncrement, handleDecrement };
 
-  render() {
-    return (
-      <div>
-        <h2>Counter</h2>
-        <p>{this.state.count}</p>
-        <button onClick={() => this.handleDecrement()}>-</button>
-        <button onClick={() => this.handleIncrement()}>+</button>
-      </div>
-    );
-  }
-}
-
-export default Counter;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Counter);
